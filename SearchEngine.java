@@ -21,12 +21,12 @@ class Handler implements URLHandler {
                 return String.format("String %s added to list!", parameters[1]);
                 }
             } if (url.getPath().contains("/search")) {
-                String[] stringsToReturn = new String[100];
+                ArrayList<String> stringsToReturn = new ArrayList<String>();
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("s")) {
                     for (int i=0; i<text.size(); i++) {
                         if (text.get(i).contains(parameters[1])) {
-                            stringsToReturn[i] = text.get(i);
+                            stringsToReturn.add(text.get(i));
                         }
                     }
                 }
